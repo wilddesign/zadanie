@@ -1,0 +1,26 @@
+<div class="row"">	
+	<div class="continent">
+		<h1>
+			<label>
+				<input type="checkbox" ng-model="$ctrl.toggleAll" ng-click="$ctrl.selectAllFromContinent($ctrl.continent)" ng-checked="$ctrl.continent.length == $ctrl.selectedFromContinent.length"/>
+				{{$ctrl.continent[0].region}}
+			</label>
+		</h1>
+		
+		<label class="sort-type">
+			<input type="checkbox" ng-model="reverse" class="sort-type"/>
+			Reverse Sort?
+		</label>
+	</div>
+</div>
+
+<ul>
+  <li ng-repeat="country in $ctrl.continent | orderBy : 'name': reverse" class="list list-unstyled">
+	<div class="row list-item">
+		<label>
+			<input type="checkbox" ng-click="$ctrl.selectCountry(country)" ng-checked="$ctrl.selectedFromContinent.indexOf(country) != -1"/>
+			{{ country.name }} (+{{ country.numericCode }}) <span class="more">more...</span>
+		</label>
+	</div>	
+  </li>
+</ul>
